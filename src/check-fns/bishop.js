@@ -1,3 +1,4 @@
+
 let check = function (board, green, i, j) {
   let oldElement = board[green["i"]][green["j"]];
   let a = green.i;

@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
 import Chessboard from "./Chessboard";
-import knightCheckFunction from "./check-fns/knight";
-import rookCheckFunction from "./check-fns/rook";
-import bishopCheckFunction from "./check-fns/bishop";
-import queenrookCheckFunction from "./check-fns/queen";
-import kingCheckFunction from "./check-fns/king";
 import pawnCheckFunction from "./check-fns/pawn";
+import bishopCheckFunction from "./check-fns/bishop";
+import knightCheckFunction from "./check-fns/knight";
+import kingCheckFunction from "./check-fns/king";
+import rookCheckFunction from "./check-fns/rook";
+import queenrookCheckFunction from "./check-fns/queen";
+
 import lodash, { compact } from "lodash";
 
 // let result =lodash.cloneDeep(board)
@@ -254,18 +255,20 @@ let funcMap = {
   Pawn: pawnCheckFunction,
   Bishop: bishopCheckFunction,
   Knight: knightCheckFunction,
-  Queen: queenrookCheckFunction,
   King: kingCheckFunction,
   Rook: rookCheckFunction,
+  Queen: queenrookCheckFunction,
 };
-let colorcompare = "";
+
+let colorCompare = "";
+
 let history = [];
+
 function App() {
   let [green, setGreen] = React.useState({});
   let [counter, setCounter] = React.useState(0);
   let onClick = function (i, j) {
-    //i,j argeument khetho layi ne
-    if (green.i !== undefined) {
+    if (green.i != undefined) {
       let oldElement = board[green["i"]][green["j"]];
       let newElement = board[i][j];
       if (oldElement == newElement) {
@@ -276,22 +279,22 @@ function App() {
         setGreen({});
         return;
       }
-      let shouldMovefn = funcMap[oldElement.piece.name]; //aapa array hi wich hi kiyo pass kita
+      let shouldMovefn = funcMap[oldElement.piece.name]; //problem
       let shouldMove = shouldMovefn(board, green, i, j);
       if (shouldMove == false) {
         return;
       }
       let result = lodash.cloneDeep(board);
-      newElement.piece = oldElement.piece;///why
+      newElement.piece = oldElement.piece;
+      colorCompare = oldElement.piece.color;
       history.push({
         a: result,
-        b: colorcompare,
+        b: colorCompare,
       });
-      colorcompare = oldElement.piece.color;
       delete oldElement.piece;
       setGreen({});
     } else {
-      if (board[i][j].piece && board[i][j].piece.color == colorcompare) {
+      if (board[i][j].piece && board[i][j].piece.color == colorCompare) {
         return;
       }
       setGreen({
@@ -300,14 +303,13 @@ function App() {
       });
     }
   };
-
   let undoonClick = function () {
     if (history.length == 0) {
       return;
     }
-    let last = history.pop();
+    let last = history.pop(); //problem
     board = last.a;
-    colorcompare = last.b;
+    colorCompare = last.b;
     setCounter(counter + 1);
   };
 
