@@ -1,0 +1,74 @@
+.board {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: brown;
+}
+
+.content {
+  border: 10.5px double #fff;
+}
+
+.row {
+  display: flex;
+}
+
+.black {
+  min-width: 75px;
+  min-height: 75px;
+  background: #fff;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.white {
+  color: #fff;
+  min-width: 75px;
+  min-height: 75px;
+  background: #000;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  max-width: 45px;
+  max-height: 45px;
+  background-color: white;
+}
+
+.green {
+  color: aliceblue;
+  min-width: 75px;
+  min-height: 75px;
+  background: green;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.undo {
+  width: 100px;
+  height: 47px;
+  color: black;
+  border-radius: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  position: relative;
+  top: 45px;
+  right: 48px;
+  transition: 0.5s;
+}
+
+.undo:hover {
+  transition: 0.5s;
+  color: white;
+  background-color: black;
+}
