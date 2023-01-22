@@ -1,5 +1,5 @@
-
 let check = function (board, green, i, j) {
+  debugger;
   let oldElement = board[green["i"]][green["j"]];
   let a = green.i;
   let b = green.j;

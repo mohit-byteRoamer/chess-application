@@ -7,7 +7,6 @@ import knightCheckFunction from "./check-fns/knight";
 import kingCheckFunction from "./check-fns/king";
 import rookCheckFunction from "./check-fns/rook";
 import queenrookCheckFunction from "./check-fns/queen";
-
 import lodash, { compact } from "lodash";
 
 // let result =lodash.cloneDeep(board)
@@ -261,9 +260,7 @@ let funcMap = {
 };
 
 let colorCompare = "";
-
 let history = [];
-
 function App() {
   let [green, setGreen] = React.useState({});
   let [counter, setCounter] = React.useState(0);
@@ -271,6 +268,7 @@ function App() {
     if (green.i != undefined) {
       let oldElement = board[green["i"]][green["j"]];
       let newElement = board[i][j];
+      // debugger;
       if (oldElement == newElement) {
         setGreen({});
         return;
@@ -279,7 +277,8 @@ function App() {
         setGreen({});
         return;
       }
-      let shouldMovefn = funcMap[oldElement.piece.name]; //problem
+
+      let shouldMovefn = funcMap[oldElement.piece.name];
       let shouldMove = shouldMovefn(board, green, i, j);
       if (shouldMove == false) {
         return;
@@ -310,7 +309,7 @@ function App() {
     let last = history.pop(); //problem
     board = last.a;
     colorCompare = last.b;
-    setCounter(counter + 1);
+    setCounter(counter + 1); //hack
   };
 
   return (
